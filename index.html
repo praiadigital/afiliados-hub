@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afiliados Hub — indique e ganhe | Praia Digital</title>
+<meta name="description" content="Programa de indicação da rede Praia Digital: gere seu link, compartilhe e acompanhe seus ganhos.">
+<link rel="canonical" href="https://praia.digital/afiliados-hub/">
+<meta name="robots" content="index, follow">
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif}
+body{margin:0;background:linear-gradient(135deg,#4c0519,#881337);color:#ffe4e6;min-height:100vh}
+.wrap{max-width:680px;margin:0 auto;padding:40px 20px}
+.card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:24px;margin-top:20px}
+input{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.2);color:#ffe4e6;margin-top:6px;box-sizing:border-box}
+button{background:#f43f5e;color:#fff;border:0;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer;margin-top:12px}
+label{font-size:14px;font-weight:600;margin-top:10px;display:block}
+.link{background:rgba(0,0,0,.3);border-radius:10px;padding:12px;margin-top:12px;word-break:break-all;font-size:14px}
+.stat{text-align:center;padding:14px;background:rgba(255,255,255,.06);border-radius:12px;flex:1}
+.stat b{font-size:24px;display:block;color:#fda4af}
+.stats{display:flex;gap:10px;margin-top:14px}
+.btn{display:inline-block;margin-top:16px;padding:12px 18px;border-radius:12px;background:#0ea5e9;color:#fff;text-decoration:none;font-weight:700}
+small{opacity:.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🤝 Afiliados Hub</h1>
+  <p>Indique a rede Praia Digital e ganhe 20% de comissão recorrente nos planos de parceiros.</p>
+  <div class="card">
+    <h2>Seu link de afiliado</h2>
+    <label>Seu nome ou código</label><input id="cod" placeholder="Ex.: maria-santos">
+    <button onclick="gerar()">Gerar link</button>
+    <div class="link" id="link" style="display:none"></div>
+  </div>
+  <div class="card">
+    <h2>Simulador de ganhos</h2>
+    <label>Indicações por mês</label><input id="ind" type="number" value="10">
+    <label>Taxa de conversão (%)</label><input id="conv" type="number" value="15">
+    <button onclick="simular()">Simular</button>
+    <div class="stats" id="stats" style="display:none">
+      <div class="stat"><b id="s1"></b>assinaturas/mês</div>
+      <div class="stat"><b id="s2"></b>ganho mensal</div>
+      <div class="stat"><b id="s3"></b>ganho anual</div>
+    </div>
+  </div>
+  <small>Programa demonstrativo. Cadastro oficial via página de parcerias.</small><br>
+  <a class="btn" href="https://praiadigital.github.io/corretores/">Kit do Corretor</a>
+  <a class="btn" href="https://praiadigital.github.io/investidores/">Investidores</a>
+  <a class="btn" href="https://praiadigital.github.io/hermes-agents/">Hermes Agents</a>
+</div>
+<script>
+function gerar(){
+  const c=document.getElementById('cod').value.trim().toLowerCase().replace(/\s+/g,'-');
+  if(!c){alert('Informe seu código.');return;}
+  const l=document.getElementById('link');l.style.display='block';
+  l.innerHTML='🔗 <strong>Seu link:</strong><br>https://praia.digital/?ref='+encodeURIComponent(c)+'<br><button onclick="navigator.clipboard.writeText(\'https://praia.digital/?ref='+encodeURIComponent(c)+'\');this.textContent=\'Copiado!\'">Copiar</button>';
+}
+function simular(){
+  const i=+document.getElementById('ind').value,c=+document.getElementById('conv').value/100;
+  const ass=Math.round(i*c*10)/10, mensal=ass*97*0.2;
+  document.getElementById('stats').style.display='flex';
+  document.getElementById('s1').textContent=ass;
+  document.getElementById('s2').textContent='R$ '+Math.round(mensal).toLocaleString('pt-BR');
+  document.getElementById('s3').textContent='R$ '+Math.round(mensal*12).toLocaleString('pt-BR');
+}
+</script>
+<hr style="margin:40px 0 20px;border:none;border-top:1px solid rgba(255,255,255,.2)">
+<nav style="font-size:.95em;text-align:center;padding:0 16px 32px;color:#fda4af">
+<strong>Rede Praia Digital:</strong><br>
+<a style="color:#fda4af" href="https://praia.digital/">Praia Digital</a> ·
+<a style="color:#fda4af" href="https://praiadigital.github.io/apps/">Todos os apps</a> ·
+<a style="color:#fda4af" href="https://praiadigital.github.io/corretores/">Kit do Corretor</a> ·
+<a style="color:#fda4af" href="https://praiadigital.github.io/investidores/">Investidores</a> ·
+<a style="color:#fda4af" href="https://praiadigital.github.io/hermes-agents/">Hermes Agents</a> ·
+<a style="color:#fda4af" href="https://praiadigital.github.io/blog-litoral/">Blog</a>
+</nav>
+</body>
+</html>
